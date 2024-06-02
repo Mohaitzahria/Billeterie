@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Match</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="p-3">
+        <form method="post" th:action="@{saveMatch(page=${page}, keyword=${keyword})}">
+            <div class="mb-3 mt-3">
+                <input type="hidden" name="id" th:value="${match.id}">
+            </div>
+
+
+            <div class="mb-3 mt-3">
+                <label for="date" class="form-label">Date:</label>
+                <input type="datetime-local" class="form-control" id="date"  name="date"  th:value="${match.date}">
+            </div>
+            <div class="mb-3">
+                <label for="equipeA" class="form-label">equipeA:</label>
+                <input type="text" class="form-control" id="equipeA" placeholder="equipeA" name="equipeA"  th:value="${match.equipeA}">
+            </div>
+            <div class="mb-3">
+                <label for="equipeB" class="form-label">equipeB:</label>
+                <input type="text" class="form-control" id="equipeB" placeholder="equipeB" name="equipeB"  th:value="${match.equipeB}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="stade" class="form-label">stade:</label>
+                <input type="number" class="form-control" id="stade" placeholder="stade" name="stade"   th:value="${match.stade}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Stade</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

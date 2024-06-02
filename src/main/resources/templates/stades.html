@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticketing</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">Liste des Stades</div>
+            <div class="card-body">
+                <form method="get" th:action="@{stades}">
+                    <label>Keyword</label>
+                    <input type="text" name="keyword" th:value="${keyword}">
+                    <button class="btn btn-primary" type="submit">Chercher</button>
+                </form>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>lieu</th>
+                        <th>maxPlaces</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="s:${listeStades}">
+                        <td th:text="${s.id}"></td>
+                        <td th:text="${s.name}"></td>
+                        <td th:text="${s.lieu}"></td>
+                        <td th:text="${s.maxPlace}"></td>
+                        <td>
+                            <a class="btn btn-danger" th:href="@{delete(id=${s.id}, page=${currentPage}, keyword=${keyword})}">
+                                Delete
+                            </a>
+                            <a class="btn btn-warning" th:href="@{editStade(id=${s.id}, page=${currentPage}, keyword=${keyword})}">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="nav nav-pills">
+                    <li th:each="page, status : ${pages}">
+                        <a th:class="${status.index==currentPage ? 'btn btn-primary ms-1': 'btn ms-1'}"
+                           th:text="${status.index}"
+                           th:href="@{stades(page=${status.index}, size=${size} ,keyword=${keyword})}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

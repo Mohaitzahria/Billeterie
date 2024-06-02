@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticketing</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">Liste des Tickets</div>
+            <div class="card-body">
+                <!-- Votre formulaire de recherche ici -->
+                <!-- Tableau pour afficher les tickets -->
+                <table class="table">
+                    <thead>
+                    <!-- Entêtes de colonnes -->
+                    </thead>
+                    <tbody>
+                    <!-- Boucle pour afficher les tickets -->
+                    <tr th:each="ticket : ${listeTickets}">
+                        <!-- Colonnes pour chaque ticket -->
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- Pagination -->
+                <ul class="nav nav-pills">
+                    <!-- Liens pour les pages -->
+                    <li th:each="page, status : ${pages}">
+                        <!-- Liens de pagination -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
